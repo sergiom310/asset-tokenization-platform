@@ -115,14 +115,32 @@ not just functionally — is part of how this was built, and it's documented ins
 
 ---
 
+## Deployment model
+
+The [backend](https://github.com/sergiom310/asset-tokenization-api)'s institution registration,
+approval and credits model already supports two deployment shapes without any redesign:
+
+- **Shared platform** — multiple institutions on one deployment, each isolated by account, as it
+  runs today.
+- **Dedicated / white-label instance** — the same codebase deployed for a single institution or
+  government agency that wants its own instance rather than sharing infrastructure.
+
+Data locality follows the same split either way: personal and institutional data lives only in the
+database, never on-chain — see the backend's
+[SECURITY.md](https://github.com/sergiom310/asset-tokenization-api/blob/main/SECURITY.md#data-locality--compliance-readiness)
+for what that means for KYC/AML and data-protection requirements. This is architectural readiness,
+not a compliance certification — no jurisdiction-specific legal review has been done.
+
+---
+
 ## Repository breakdown
 
 ### [asset-tokenization-smart-contracts](https://github.com/sergiom310/asset-tokenization-smart-contracts)
 
-ERC-721 contracts (a non-upgradeable V1 and a UUPS-upgradeable V2) supporting 8 asset categories,
-per-token soulbound flags, dynamic metadata for assets whose state changes over time, on-chain
-metadata history, ERC-2981 royalties, and role-based access control. Deployed and verified on Base
-Sepolia and Sepolia testnets.
+A UUPS-upgradeable ERC-721 contract supporting 8 asset categories, per-token soulbound flags,
+dynamic metadata for assets whose state changes over time, on-chain metadata history, ERC-2981
+royalties, and role-based access control. Deployed and verified on Polygon Amoy and Base Sepolia
+testnets.
 
 ### [asset-tokenization-api](https://github.com/sergiom310/asset-tokenization-api)
 
