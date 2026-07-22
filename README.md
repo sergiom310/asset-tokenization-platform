@@ -1,9 +1,10 @@
 # Asset Tokenization Platform
 
-> Blockchain infrastructure for tokenizing real-world assets — real estate, vehicles, certificates,
-> official documents and intellectual property — with mutable metadata, on-chain verification,
-> non-transferable records where required, and an onboarding experience that requires no crypto
-> knowledge from institutions or end users.
+> Blockchain infrastructure for instant, tamper-proof verification of certificates and official
+> documents — diplomas, permits, government records — built for institutions like universities,
+> notaries and government agencies, and extending to real estate, vehicles and other real-world
+> assets. Mutable metadata, on-chain verification, non-transferable records where required, and an
+> onboarding experience that requires no crypto knowledge from institutions or end users.
 
 This repo is documentation only. It's the map of a working, three-repo system — read it first, then
 go read the code.
@@ -29,14 +30,18 @@ This platform is built around that constraint: **institutions operate through a 
 email/password login, end users never need a wallet to receive a record, and anyone can verify one
 from a public link with no account at all.**
 
+It runs today as a shared multi-tenant platform, and the same codebase deploys as a dedicated
+white-label instance for a single institution or government agency that wants its own — see
+[Deployment model](#deployment-model).
+
 ## Use cases
 
 | Asset type | Real-world example | Transferable? |
 |---|---|---|
-| Real estate | Property title / deed | Yes |
-| Vehicle | Vehicle registration, technical inspection record | Yes |
 | Certificate | Diploma, professional license, training credential | **No — soulbound** |
 | Document | Government-issued ID document, official permit | **No — soulbound** |
+| Real estate | Property title / deed | Yes |
+| Vehicle | Vehicle registration, technical inspection record | Yes |
 | Intellectual property | Patent, trademark, copyright registration | **No — soulbound** |
 | Artwork / Luxury item | Provenance and authenticity record | Yes |
 
@@ -130,6 +135,24 @@ database, never on-chain — see the backend's
 [SECURITY.md](https://github.com/sergiom310/asset-tokenization-api/blob/main/SECURITY.md#data-locality--compliance-readiness)
 for what that means for KYC/AML and data-protection requirements. This is architectural readiness,
 not a compliance certification — no jurisdiction-specific legal review has been done.
+
+---
+
+## How I work with institutions
+
+This is a repeatable engagement, not a one-off demo:
+
+1. **Analysis** — map the institution's existing records and workflow, decide which asset categories
+   apply, and scope soulbound vs. transferable per category.
+2. **Development** — configure or extend the platform for the institution: branding, credit/plan
+   setup, and any category-specific fields.
+3. **DevOps** — deploy as a shared-tenant account or a dedicated white-label instance (see
+   [Deployment model](#deployment-model) above), with the same encryption and data-locality
+   guarantees either way.
+4. **QA** — test the full mint → verify → (if applicable) transfer lifecycle against the
+   institution's actual document types before go-live.
+5. **Maintenance** — ongoing support: credit top-ups, operator wallet balance monitoring (already
+   built in), and platform updates that never touch records already minted.
 
 ---
 
