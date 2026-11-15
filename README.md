@@ -97,7 +97,7 @@ Each repo now also has an automated suite that runs in CI on every push, not jus
 | Repo | Suite | What it covers |
 |---|---|---|
 | Smart contracts | 36 Hardhat tests | access control, soulbound logic, royalties, pause, the reentrancy regression above, and beacon-upgrade safety (storage layout, cross-institution upgrade propagation) |
-| Backend API | 77 Bun tests | integration tests run against a **real local Hardhat node + MariaDB service** in CI (not mocked ethers calls) — see `.github/workflows/test.yml` |
+| Backend API | 167 Bun tests | integration tests run against a **real local Hardhat node + MariaDB service** in CI (not mocked ethers calls) — see `.github/workflows/test.yml` |
 | Frontend DApp | 64 Vitest unit tests | components, services and pages, including the mint-form signature flow |
 
 Still open, tracked rather than hidden: a third-party security audit of the smart contracts (quoted, execution pending seed funding) and the Base mainnet migration — both called out explicitly below instead of implied as done.
